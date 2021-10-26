@@ -169,8 +169,8 @@ st.altair_chart(alt.Chart(chart_data)
         y=alt.Y("volume:Q"),
         tooltip=['minute', 'volume']
     ).configure_mark(
-        opacity=0.8,
-        color='white'
+        opacity=0.5,
+        color='blue'
     ), use_container_width=True)
 
 #st.write('**Note: ** The data used in this data product are modified due to NDA agreements with the client. So, the data, used here, is not reliable for decision making.')
