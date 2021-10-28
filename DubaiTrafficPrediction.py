@@ -5,6 +5,13 @@ import pandas as pd
 import numpy as np
 import altair as alt
 import pydeck as pdk
+import streamlit_analytics# source: https://pypi.org/project/streamlit-analytics/
+
+
+# We use streamlit_analytics to track the site like in Google Analytics
+streamlit_analytics.start_tracking()
+# your streamlit code here
+
 
 # configuring the page and the logo
 st.set_page_config(page_title='Mohamed Gabr - The Smart City', page_icon ='logo.png', layout = 'wide', initial_sidebar_state = 'auto')
@@ -79,6 +86,32 @@ def map(data, lat, lon, zoom):
             ),
         ]
     ))
+
+# adding whats app to the page
+# from streamlit.components.v1 import components
+# st.markdown(f"""<head><script src='https://apps.elfsight.com/p/platform.js' defer></script><div class='elfsight-app-7efae684-c950-4e81-8d00-f6cf1ba9d008'></div></head>""", unsafe_allow_html=True)
+
+
+# installing Google analytics
+# import re
+# code = """<!-- Global site tag (gtag.js) - Google Analytics -->
+# <script async src="https://www.googletagmanager.com/gtag/js?id=G-QX8H7VED8C"></script>
+# <script>
+#   window.dataLayer = window.dataLayer || [];
+#   function gtag(){dataLayer.push(arguments);}
+#   gtag('js', new Date());
+#
+#   gtag('config', 'G-QX8H7VED8C');
+# </script>"""
+#st.markdown(code, unsafe_allow_html=True)
+# a=os.path.dirname(st.__file__)+'/static/index.html'
+# with open(a, 'r') as f:
+#     data_GA=f.read()
+#     if len(re.findall('UA-', data_GA))==0:
+#         with open(a, 'w') as ff:
+#             newdata=re.sub('<head>','<head>'+code,data_GA)
+#             print(newdata)
+#             ff.write(newdata)
 
 
 # preparing the layout for the top section of the app
@@ -169,8 +202,8 @@ st.altair_chart(alt.Chart(chart_data)
         y=alt.Y("volume:Q"),
         tooltip=['minute', 'volume']
     ).configure_mark(
-        opacity=0.8,
-        color='white'
+        opacity=0.5,
+        color='blue'
     ), use_container_width=True)
 
 #st.write('**Note: ** The data used in this data product are modified due to NDA agreements with the client. So, the data, used here, is not reliable for decision making.')
@@ -208,3 +241,7 @@ text-align: center;
 </div>
 """
 st.markdown(footer,unsafe_allow_html=True)
+
+
+
+streamlit_analytics.stop_tracking(unsafe_password="forwardgbrbreen12")
