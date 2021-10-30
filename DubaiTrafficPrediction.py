@@ -244,4 +244,4 @@ st.markdown(footer,unsafe_allow_html=True)
 
 
 
-streamlit_analytics.stop_tracking(unsafe_password="forwardgbrbreen12")
+streamlit_analytics.stop_tracking(unsafe_password="forward1")
